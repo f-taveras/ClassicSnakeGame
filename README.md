@@ -1,6 +1,4 @@
-# Course 
-
-201 Team One: The East Code
+# Course 201 Team One: The East Code
 
 ## Project Name: Classic Snake Game
 
@@ -10,7 +8,8 @@ Our project aims to create a Classic Snake game using JavaScript. The game will 
 
 ### Links and Resources
 
-* [submission PR](http://xyz.com)
+* [submission link](https://theeastcode.github.io/ClassicSnakeGame/)
+
 * Any Links you used as reference
 
 ### Lighthouse Accessibility Report Score
