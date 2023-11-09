@@ -23,7 +23,7 @@ Based on the article [Snake Tutorial](https://www.freecodecamp.org/news/how-to-b
 
 3. **HTML Skeleton and CSS Framework** (One Member)
    - Create the HTML structure for the game layout.
-   - Implement a CSS framework (e.g., Bootstrap) for responsive design.
+   - Implement a CSS framework  for responsive design.
    - Commit and push HTML and CSS files to the repository.
 
 **Day 2: Visual Design and Styling**
