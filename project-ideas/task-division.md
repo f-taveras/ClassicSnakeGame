@@ -46,6 +46,7 @@ Certainly, let's expand on the tasks and provide more details for each component
    - Commit and push JavaScript files for user interaction.
 
 **Day 4: Game Mechanics and Logic**
+
 7. **Snake Movement and Collision** (One Member)
    - Implement the logic for snake movement, collision detection, and growth.
    - Handle collisions with the game walls and the snake itself.
