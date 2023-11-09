@@ -3,7 +3,6 @@
 
 Based on the article [Snake Tutorial](https://www.freecodecamp.org/news/how-to-build-a-snake-game-in-javascript/), this might be a good breakdown of all the tasks involved in building the game.
 
-Certainly, let's expand on the tasks and provide more details for each component of your project, along with a comprehensive division of work and GitHub structure:
 
 **Task Division:**
 
