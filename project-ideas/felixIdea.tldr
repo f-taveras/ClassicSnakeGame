@@ -66,9 +66,9 @@
     {
       "id": "pointer:pointer",
       "typeName": "pointer",
-      "x": 706.0193147132145,
-      "y": 827.0504368154249,
-      "lastActivityTimestamp": 1699475463899,
+      "x": -208.6114691812737,
+      "y": -110.03423795164097,
+      "lastActivityTimestamp": 1699651465191,
       "meta": {}
     },
     {
@@ -79,9 +79,9 @@
       "typeName": "page"
     },
     {
-      "x": 227.4321608040201,
-      "y": 236.2261306532663,
-      "z": 0.4617169373549884,
+      "x": 405.7162447016851,
+      "y": 184.25213592943132,
+      "z": 0.568252103234665,
       "meta": {},
       "id": "camera:page:page",
       "typeName": "camera"
@@ -89,10 +89,8 @@
     {
       "editingShapeId": "shape:0q-jSN3w1I7Tjzv63iQIt",
       "croppingShapeId": null,
-      "selectedShapeIds": [
-        "shape:0q-jSN3w1I7Tjzv63iQIt"
-      ],
-      "hoveredShapeId": "shape:0q-jSN3w1I7Tjzv63iQIt",
+      "selectedShapeIds": [],
+      "hoveredShapeId": null,
       "erasingShapeIds": [],
       "hintingShapeIds": [],
       "focusedGroupId": null,
@@ -122,8 +120,8 @@
       "screenBounds": {
         "x": 0,
         "y": 0,
-        "w": 958,
-        "h": 654
+        "w": 1381.6666259765625,
+        "h": 745.8333129882812
       },
       "zoomBrush": null,
       "isGridMode": false,
@@ -132,10 +130,10 @@
       "isChatting": false,
       "highlightedUserIds": [],
       "canMoveCamera": true,
-      "isFocused": false,
+      "isFocused": true,
       "devicePixelRatio": 1,
       "isCoarsePointer": false,
-      "isHoveringCanvas": true,
+      "isHoveringCanvas": false,
       "openMenus": [],
       "isChangingStyle": false,
       "isReadonly": false,
@@ -1533,7 +1531,7 @@
       "typeName": "shape"
     },
     {
-      "x": 660.375,
+      "x": 948.7734184265137,
       "y": 821.8515625,
       "rotation": 0,
       "isLocked": false,
@@ -1543,8 +1541,8 @@
       "props": {
         "color": "black",
         "size": "s",
-        "w": 693.25,
-        "text": "Video Explainer: https://www.youtube.com/watch?v=baBq5GAL0_U&t=258s",
+        "w": 116.45572662353516,
+        "text": "0_U&t=258s",
         "font": "draw",
         "align": "middle",
         "autoSize": true,
