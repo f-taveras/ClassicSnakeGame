@@ -8,9 +8,13 @@ Our project aims to create a Classic Snake game using JavaScript. The game will 
 
 ### Links and Resources
 
-* [submission link](https://theeastcode.github.io/ClassicSnakeGame/)
+[User Stories](https://docs.google.com/document/d/1WjaIpBPHJSYX6xikpz2NYYcdhOgO1v_t4116xb7SXDI/edit?usp=sharing)
 
-* Any Links you used as reference
+[Wireframe](project-ideas/kiddsidea.tldr)
+
+[Submission link](https://theeastcode.github.io/ClassicSnakeGame/)
+
+
 
 ### Lighthouse Accessibility Report Score
 
