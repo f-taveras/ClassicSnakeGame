@@ -279,17 +279,22 @@ footer {
   background-color: rgb(0, 0, 0);
   height: 40px;
   width: 120px;
-  border: 1px solid rgb(227, 226, 226);
+  border: 2px solid rgb(3, 193, 3); 
   border-radius: 10px;
   color: rgb(3, 193, 3);
   font-weight: 600;
-  padding: 10px;
+  padding: 5px 10px; 
   margin: 10px 20px;
-  box-shadow: 4px -3px 1.5px rgb(227, 226, 226);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
   cursor: pointer;
+}
+
+.toggle-tutorial:hover {
+  background-color: rgb(3, 193, 3);
+  color: black;
 }
 
 .toggle-tutorial:active {
   transform: scale(0.95);
-  transition: transform 0.1s ease-in-out;
+  transition: background-color 0.3s, color 0.3s; 
 }
