@@ -4,7 +4,7 @@
 
 Our project aims to create a Classic Snake game using JavaScript. The game will feature a snake that grows in length as it consumes food and a simple grid-based playing area. Players will control the snake's direction, and the game's objective will be to eat as much food as possible without colliding with the walls or the snake's own tail. The game will keep score of player losses and wins.
 
-### Author: Latherio Kidd, Ekow Yawson, Stephanie G. Johnson, Felix Taveras, David Grier
+### Authors: Latherio Kidd, Ekow Yawson, Stephanie G. Johnson, Felix Taveras, David Grier
 
 ### Links and Resources
 

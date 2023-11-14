@@ -174,6 +174,11 @@ function updateHighScore(){
 function updateScore(){
     document.getElementById('currentScore').textContent = `Score: ${currentScore}`;
 }
+
+function toggleTutorial() {
+    var tutorial = document.querySelector('.tutorial-container');
+    tutorial.style.display = (tutorial.style.display === 'none' || tutorial.style.display === '') ? 'block' : 'none';
+  }
 /* TEST METHODS/FUNCTIONS */
 // Add a click event listener to the canvas
 //canvas.addEventListener("click", function (e) {
