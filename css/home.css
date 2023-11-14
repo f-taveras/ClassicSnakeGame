@@ -278,6 +278,13 @@ footer {
   background-color: #101010;
   box-shadow: 3px 3px 2px rgb(144, 158, 144), -1em 0 .6em green;
   color: white;
+  line-height: 2.0;
+}
+
+.tutorial-container h2{
+  color: rgb(200, 12, 43);
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .toggle-tutorial {
