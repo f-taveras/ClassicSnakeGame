@@ -77,6 +77,7 @@ main {
   height: 500px;
   text-align: center;
   margin: 200px auto;
+  overflow: hidden;
 }
 
 .about-section,
@@ -110,11 +111,11 @@ main {
   text-shadow: 1px .5px .2px rgb(107, 9, 25);
   display: inline-block;
   padding-bottom: 10px;
-  margin-bottom: 200px;
+  margin-bottom: 250px;
   font-size: 18px;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 5s, opacity 0.5s ease-in-out;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
 }
 
 .high-score:hover h2 {
@@ -122,20 +123,39 @@ main {
   opacity: 1;
 }
 
-.high-score li {
+
+.high-score ul {
   list-style: none;
   padding: 0;
   margin: 0;
   overflow: hidden;
-  animation: scrollAnimation 5s linear infinite;
+  animation: scrollAnimation 10s linear infinite;
 }
 
 @keyframes scrollAnimation {
-  from {
+  0% {
     transform: translateY(0);
   }
-  to {
-    transform: translateY(calc(-160% - 160px)); 
+  25% {
+    transform: translateY(calc(-100% * 1));
+  }
+  50% {
+    transform: translateY(calc(-100% * 2));
+  }
+  75% {
+    transform: translateY(calc(-100% * 3));
+  }
+  100% {
+    transform: translateY(calc(-100% * 4));
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
   }
 }
 
