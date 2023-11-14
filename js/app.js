@@ -1,10 +1,11 @@
 /* GLOBAL VARS */
 
 // Sound files and Variables
-var gameOverSound = new Audio("./game-over.mp3");
-var gameStartSound = new Audio("./game-start.mp3");
-var snakeTurnSound = new Audio("./snake-turn.mp3");
-var snakeEatAppleSound = new Audio("./snake-eat-apple.mp3");
+var gameOverSound = new Audio("game-over.mp3");
+var gameStartSound = new Audio("game-start.mp3");
+var snakeTurnSound = new Audio("snake-turn.mp3");
+var snakeEatAppleSound = new Audio("snake-eat-apple.mp3");
+gameStartSound.volume = 0.35;
 //
 
 const cl = (input) => {console.log(input)};
@@ -102,6 +103,8 @@ function update() {
     if (newHead.x < 0 || newHead.x * boxSize >= canvasSize || newHead.y < 0 || newHead.y * boxSize >= canvasSize) {
         // Game over
         // Game over Sound effect
+        gameStartSound.pause();
+        gameStartSound.currentTime = 0;
         gameOverSound.play();
         //
         alert(`Game Over! Your score ${currentScore}`);
@@ -115,6 +118,8 @@ function update() {
         if (newHead.x === snake[i].x && newHead.y === snake[i].y) {
             // Game over
             // Game over Sound effect
+            gameStartSound.pause();
+            gameStartSound.currentTime = 0;
             gameOverSound.play();
             //
             alert(`Game Over! Your score ${currentScore}`);
@@ -137,12 +142,17 @@ function resetGame() {
     generateFood();
     direction = "right";
     updateHighScore();
+    // Reset game music after death
+   // gameStartSound.pause();
+   // gameStartSound.currentTime = 0;
+   // gameStartSound.play();
 }
 function initHighScore() {
     const storedHighScore = localStorage.getItem('highScore');
     if (storedHighScore) {
         highScore = parseInt(storedHighScore);
         updateHighScore();
+                
     }
 }
 
@@ -155,12 +165,16 @@ function startGame() {
   if (!nIntervId) {
     nIntervId = setInterval(update, 100);
     // Play Start Game Sound
+    gameStartSound.currentTime = 0;
     gameStartSound.play();
   }
 }
 
 function stopGame() {
   clearInterval(nIntervId);
+  // Stop playing background music
+  gameStartSound.pause();
+  
   // release our intervalID from the variable
   nIntervId = null;
   resetGame();
