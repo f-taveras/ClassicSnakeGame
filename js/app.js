@@ -1,4 +1,12 @@
 /* GLOBAL VARS */
+
+// Sound files and Variables
+var gameOverSound = new Audio("./game-over.mp3");
+var gameStartSound = new Audio("./game-start.mp3");
+var snakeTurnSound = new Audio("./snake-turn.mp3");
+var snakeEatAppleSound = new Audio("./snake-eat-apple.mp3");
+//
+
 const cl = (input) => {console.log(input)};
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -82,6 +90,8 @@ function update() {
     if (newHead.x === food.x && newHead.y === food.y) {
         snake.unshift({ x: food.x, y: food.y });
         generateFood();
+        // Play eating sound
+        snakeEatAppleSound.play();
         currentScore += 5;
     } else {
         // Remove the tail if no collision with food
@@ -91,6 +101,9 @@ function update() {
     // Check for collision with walls
     if (newHead.x < 0 || newHead.x * boxSize >= canvasSize || newHead.y < 0 || newHead.y * boxSize >= canvasSize) {
         // Game over
+        // Game over Sound effect
+        gameOverSound.play();
+        //
         alert(`Game Over! Your score ${currentScore}`);
         resetGame();
         currentScore = 0;
@@ -101,6 +114,9 @@ function update() {
     for (let i = 1; i < snake.length; i++) {
         if (newHead.x === snake[i].x && newHead.y === snake[i].y) {
             // Game over
+            // Game over Sound effect
+            gameOverSound.play();
+            //
             alert(`Game Over! Your score ${currentScore}`);
             resetGame();
             currentScore = 0
@@ -138,6 +154,8 @@ generateFood();
 function startGame() {
   if (!nIntervId) {
     nIntervId = setInterval(update, 100);
+    // Play Start Game Sound
+    gameStartSound.play();
   }
 }
 
@@ -154,15 +172,23 @@ document.addEventListener("keydown", (e) => {
     switch (e.key) {
         case "ArrowUp":
             direction = "up";
+            // Play snake turn sound
+            snakeTurnSound.play();
             break;
         case "ArrowDown":
             direction = "down";
+            // Play snake turn sound
+            snakeTurnSound.play();
             break;
         case "ArrowLeft":
             direction = "left";
+            // Play snake turn sound
+            snakeTurnSound.play();
             break;
         case "ArrowRight":
             direction = "right";
+            // Play snake turn sound
+            snakeTurnSound.play();
             break;
     }
 });
