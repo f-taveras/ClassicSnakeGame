@@ -46,4 +46,3 @@ Our project aims to create a Classic Snake game using JavaScript. The game will 
     → - Move Right
 
 2. Press the "GO!" button to start the game and "STOP" to pause the game.
-
