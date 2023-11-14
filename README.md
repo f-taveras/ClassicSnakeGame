@@ -33,7 +33,17 @@ Our project aims to create a Classic Snake game using JavaScript. The game will 
 
 * Provide a screenshot of your score after running a Lighthouse Accessibility report.
 
-### Reflections and Comments
+### Snake: How to Play
 
-* Consider including the answers to your daily journal and submission questions here
-* This is also a good place to reflect on the tools and resources used and learned
+1. Use the arrow keys to control the snake:
+
+    ↑ - Move Up
+
+    ↓ - Move Down
+
+    ← - Move Left
+
+    → - Move Right
+
+2. Press the "GO!" button to start the game and "STOP" to pause the game.
+
