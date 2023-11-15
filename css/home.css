@@ -325,6 +325,7 @@ footer {
   box-shadow: 3px 3px 2px rgb(144, 158, 144), -1em 0 .6em green;
   color: white;
   line-height: 2.0;
+  display: none;
 }
 
 .tutorial-container h2 {

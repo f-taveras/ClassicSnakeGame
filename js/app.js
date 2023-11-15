@@ -174,10 +174,18 @@ function updateHighScore(){
 function updateScore(){
     document.getElementById('currentScore').textContent = `Score: ${currentScore}`;
 }
-
+//Toggle Tutorial Function for Game HTML
 function toggleTutorial() {
-    var tutorial = document.querySelector('.tutorial-container');
-    tutorial.style.display = (tutorial.style.display === 'none' || tutorial.style.display === '') ? 'block' : 'none';
+    let tutorialContainer = document.getElementById("tutorialContainer");
+    let button = document.querySelector(".toggle-tutorial");
+  
+    if (tutorialContainer.style.display === "none") {
+      tutorialContainer.style.display = "block";
+      button.innerText = "Hide Tutorial";
+    } else {
+      tutorialContainer.style.display = "none";
+      button.innerText = "How To Play";
+    }
   }
 
  
