@@ -214,6 +214,22 @@ function updateHighScore(){
 function updateScore(){
     document.getElementById('currentScore').textContent = `Score: ${currentScore}`;
 }
+//Toggle Tutorial Function for Game HTML
+function toggleTutorial() {
+    let tutorialContainer = document.getElementById("tutorialContainer");
+    let button = document.querySelector(".toggle-tutorial");
+  
+    if (tutorialContainer.style.display === "none") {
+      tutorialContainer.style.display = "block";
+      button.innerText = "Hide Tutorial";
+    } else {
+      tutorialContainer.style.display = "none";
+      button.innerText = "How To Play";
+    }
+  }
+
+ 
+
 /* TEST METHODS/FUNCTIONS */
 // Add a click event listener to the canvas
 //canvas.addEventListener("click", function (e) {
