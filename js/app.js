@@ -1,166 +1,204 @@
-/* GLOBAL VARS */
-
+'use strict';
+/* ================> GLOBAL VARS ================> */
+// const cl = (input) => {console.log(input);};
 // Sound files and Variables
-var gameOverSound = new Audio("game-over.mp3");
-var gameStartSound = new Audio("game-start.mp3");
-var snakeTurnSound = new Audio("snake-turn.mp3");
-var snakeEatAppleSound = new Audio("snake-eat-apple.mp3");
+const gameOverSound = new Audio('game-over.mp3');
+const gameStartSound = new Audio('game-start.mp3');
+const snakeTurnSound = new Audio('snake-turn.mp3');
+const snakeEatAppleSound = new Audio('snake-eat-apple.mp3');
 gameStartSound.volume = 0.35;
-//
 
-const cl = (input) => {console.log(input)};
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-let currentScore = 0;
-let highScore = localStorage.getItem('highScore') || 0;
-
+// Canvas
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 const boxSize = 10;
 const canvasSize = 600;
 
-const startButton = document.getElementById('start').addEventListener('click', startGame);
-const resetButton = document.getElementById('reset').addEventListener('click', stopGame);
-
+// Init beginning values
+let scores = [];
+let currentScore = 0;
 let nIntervId;
 let snake = [{ x: 10, y: 10 }];
 let food = { x: 0, y: 0 };
-let direction = "right";
+let direction = 'right';
+let playerObj;
 
-/* FUNCTION TO DRAW FOOD AND SNAKE */
-function draw() {
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvasSize, canvasSize);
+//Get player's name
+let playerName = prompt('What is your name, friend?');
+playerName = validateName(playerName);
 
-    // Draw the snake
-    ctx.fillStyle = "#00FF00";
-    for (let i = 0; i < snake.length; i++) {
-        const isHead = i === 0;
-        ctx.fillStyle = isHead ? "#00FF00" : "#008000"; //Head is green, body is dark green
-        ctx.beginPath();
-        ctx.arc((snake[i].x + 0.5) * boxSize, (snake[i].y + 0.5) * boxSize, boxSize / 2, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.closePath();
-        //ctx.fillRect(snake[i].x * boxSize, snake[i].y * boxSize, boxSize, boxSize);
+/* ================> GAME CLASS */
+class Game {
+  constructor(id, player, highestScore, gamesPlayed) {
+    this.id = id;
+    this.player = player;
+    this.highestScore = highestScore;
+    this.gamesPlayed = gamesPlayed;
+  }
+}
+
+// Local storage
+const storedScores = localStorage.getItem('snakeScores');
+if(!storedScores){
+  scores = [ new Game(0, playerName, 0, 0) ];
+} else {
+  const parsedScores = JSON.parse(storedScores);
+  let newPlayer = {};
+
+  scores = parsedScores.map(score => new Game(
+    score.id,
+    score.player,
+    score.highestScore,
+    score.gamesPlayed
+  ));
+
+  if(!scores.find(isPlayer)) {
+    newPlayer = new Game(0, playerName, 0, 0);
+    scores.push(newPlayer);
+  }
+}
+
+playerObj = scores.find(isPlayer);
+
+/* ================> FUNCTIONS ================> */
+/* ================> SEARCH EXISTING PLAYER */
+function isPlayer(game) {
+  return game.player === playerName;
+}
+
+/* ================> GET PLAYER NAME */
+function validateName(name) {
+  // Input validation
+  if (name && name.trim().length !== 0) {
+    // Remove non-allowed characters
+    name = name.replace(/[^a-zA-Z0-9\-_\.]/g, '');
+    // Truncate to 10 characters if the name is longer
+    if (name.length > 10) {
+      name = name.substring(0, 10);
     }
+  } else {
+    name = 'AAA';
+  }
+  return name;
+}
 
-    // Draw the food
-    ctx.fillStyle = "#FF0000";
+/* ================> DRAW FOOD AND SNAKE ON CANVAS */
+function draw() {
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvasSize, canvasSize);
+
+  // Draw the snake
+  ctx.fillStyle = '#00FF00';
+  for (let i = 0; i < snake.length; i++) {
+    const isHead = i === 0;
+    //Head is green, body is dark green
+    ctx.fillStyle = isHead ? '#00FF00' : '#008000';
     ctx.beginPath();
-    ctx.arc((food.x + 0.5) * boxSize, (food.y + 0.5) * boxSize, boxSize / 2, 0, 2 * Math.PI);
+    ctx.arc(
+      (snake[i].x + 0.5) * boxSize,
+      (snake[i].y + 0.5) * boxSize,
+      boxSize / 2, 0, 2 * Math.PI
+    );
     ctx.fill();
     ctx.closePath();
+  }
+
+  // Draw the food
+  ctx.fillStyle = '#FF0000';
+  ctx.beginPath();
+  ctx.arc(
+    (food.x + 0.5) * boxSize,
+    (food.y + 0.5) * boxSize,
+    boxSize / 2, 0, 2 * Math.PI
+  );
+  ctx.fill();
+  ctx.closePath();
 }
 
+/* ================> GENERATE FOOD IN RAND LOC AND SET HIGH SCORE */
 function generateFood() {
-    food.x = Math.floor(Math.random() * (canvasSize / boxSize));
-    food.y = Math.floor(Math.random() * (canvasSize / boxSize));
-   
-    if (currentScore > highScore){
-        highScore = currentScore;
-        localStorage.setItem('highScore', highScore);
-        updateHighScore();
-    }
-    
-
+  food.x = Math.floor(Math.random() * (canvasSize / boxSize));
+  food.y = Math.floor(Math.random() * (canvasSize / boxSize));
+  updateHighScore();
 }
 
-
-/* FUNCTION TO UPDATE SNAKE MOVEMENT AND UPDATE FOOD */
+/* ================> UPDATE SNAKE MOVEMENT AND UPDATE FOOD */
 function update() {
-    // Move the snake
-    let newHead = { x: snake[0].x, y: snake[0].y };
-    switch (direction) {
-        case "up":
-            newHead.y--;
-            updateScore();
-            break;
-        case "down":
-            newHead.y++;
-            updateScore();
-            break;
-        case "left":
-            newHead.x--;
-            updateScore();
-            break;
-        case "right":
-            newHead.x++;
-            updateScore();
-            break;
-    }
+  // Move the snake
+  let newHead = { x: snake[0].x, y: snake[0].y };
+  switch (direction) {
+    case 'up':
+      newHead.y--;
+      updateScore();
+      updateHighScore();
+      break;
+    case 'down':
+      newHead.y++;
+      updateScore();
+      updateHighScore();
+      break;
+    case 'left':
+      newHead.x--;
+      updateScore();
+      updateHighScore();
+      break;
+    case 'right':
+      newHead.x++;
+      updateScore();
+      updateHighScore();
+      break;
+  }
 
-    // Check for collision with food
-    if (newHead.x === food.x && newHead.y === food.y) {
-        snake.unshift({ x: food.x, y: food.y });
-        generateFood();
-        // Play eating sound
-        snakeEatAppleSound.play();
-        currentScore += 5;
-    } else {
-        // Remove the tail if no collision with food
-        snake.pop();
-    }
-
-    // Check for collision with walls
-    if (newHead.x < 0 || newHead.x * boxSize >= canvasSize || newHead.y < 0 || newHead.y * boxSize >= canvasSize) {
-        // Game over
-        // Game over Sound effect
-        gameStartSound.pause();
-        gameStartSound.currentTime = 0;
-        gameOverSound.play();
-        //
-        alert(`Game Over! Your score ${currentScore}`);
-        resetGame();
-        currentScore = 0;
-        return;
-    }
-
-    // Check for collision with itself
-    for (let i = 1; i < snake.length; i++) {
-        if (newHead.x === snake[i].x && newHead.y === snake[i].y) {
-            // Game over
-            // Game over Sound effect
-            gameStartSound.pause();
-            gameStartSound.currentTime = 0;
-            gameOverSound.play();
-            //
-            alert(`Game Over! Your score ${currentScore}`);
-            resetGame();
-            currentScore = 0
-            return;
-        }
-    }
-
-    // Add the new head to the snake
-    snake.unshift(newHead);
-
-    // Draw the updated game state
-    draw();
-}
-
-/* PAUSE & RESET GAME */
-function resetGame() {
-    snake = [{ x: 10, y: 10 }];
+  // Check for collision with food
+  if (newHead.x === food.x && newHead.y === food.y) {
+    snake.unshift({ x: food.x, y: food.y });
     generateFood();
-    direction = "right";
-    updateHighScore();
-    // Reset game music after death
-   // gameStartSound.pause();
-   // gameStartSound.currentTime = 0;
-   // gameStartSound.play();
-}
-function initHighScore() {
-    const storedHighScore = localStorage.getItem('highScore');
-    if (storedHighScore) {
-        highScore = parseInt(storedHighScore);
-        updateHighScore();
-                
+    // Play eating sound
+    snakeEatAppleSound.play();
+    currentScore += 5;
+  } else {
+    // Remove the tail if no collision with food
+    snake.pop();
+  }
+
+  // Check for collision with walls
+  if (newHead.x < 0
+    || newHead.x * boxSize >= canvasSize
+    || newHead.y < 0
+    || newHead.y * boxSize >= canvasSize
+  ) {
+    // Game over Sound effect
+    gameOver();
+    currentScore = 0;
+    return;
+  }
+
+  // Check for collision with itself
+  for (let i = 1; i < snake.length; i++) {
+    if (newHead.x === snake[i].x
+      && newHead.y === snake[i].y
+    ) {
+      // Game over Sound effect
+      gameOver();
+      currentScore = 0;
+      return;
     }
+  }
+  // Add the new head to the snake
+  snake.unshift(newHead);
+  // Draw the updated game state
+  draw();
 }
 
-// Generate initial food and start the game loop
-initHighScore();
-// Generate initial food and start the game loop
-generateFood();
+/* ================> PAUSE & RESET GAME */
+function resetGame() {
+  snake = [{ x: 10, y: 10 }];
+  generateFood();
+  direction = 'right';
+  updateHighScore();
+}
 
+/* ================> START GAME */
 function startGame() {
   if (!nIntervId) {
     nIntervId = setInterval(update, 100);
@@ -170,56 +208,82 @@ function startGame() {
   }
 }
 
+/* ================> STOP GAME */
 function stopGame() {
+  if (currentScore > playerObj.highestScore) {
+    playerObj.highestScore = currentScore;
+  }
+
+  const gameNumber = scores.reduce(
+    (accumulator,currentValue) => accumulator+currentValue.gamesPlayed,0
+  );
+
+  playerObj.id = gameNumber + 1;
+  playerObj.gamesPlayed++;
+
+  localStorage.setItem('snakeScores', JSON.stringify(scores));
   clearInterval(nIntervId);
   // Stop playing background music
   gameStartSound.pause();
-  
   // release our intervalID from the variable
   nIntervId = null;
   resetGame();
 }
 
+/* ================> GAME OVER, RESET GAME, AND STOP/START SOUNDS */
+function gameOver() {
+  // Game over Sound effect
+  gameStartSound.pause();
+  gameStartSound.currentTime = 0;
+  gameOverSound.play();
 
-// HANDLE ARROW KEY CONTROLS
-document.addEventListener("keydown", (e) => {
-    switch (e.key) {
-        case "ArrowUp":
-            direction = "up";
-            // Play snake turn sound
-            snakeTurnSound.play();
-            break;
-        case "ArrowDown":
-            direction = "down";
-            // Play snake turn sound
-            snakeTurnSound.play();
-            break;
-        case "ArrowLeft":
-            direction = "left";
-            // Play snake turn sound
-            snakeTurnSound.play();
-            break;
-        case "ArrowRight":
-            direction = "right";
-            // Play snake turn sound
-            snakeTurnSound.play();
-            break;
-    }
+  alert(`Game Over! Your score ${currentScore}`);
+  stopGame();
+}
+
+/* ================> UPDATE SCORES */
+function updateHighScore() {
+  const highScore = document.getElementById('highScore');
+  if (currentScore > playerObj.highestScore) {
+    playerObj.highestScore = currentScore;
+  }
+  highScore.textContent = `High Score  ${playerObj.highestScore}`;
+}
+
+function updateScore() {
+  document.getElementById('currentScore').textContent = `Score: ${currentScore}`;
+}
+
+/* HANDLE ARROW KEY CONTROLS */
+document.addEventListener('keydown', (e) => {
+  switch (e.key) {
+    case 'ArrowUp':
+      direction = 'up';
+      // Play snake turn sound
+      snakeTurnSound.play();
+      break;
+    case 'ArrowDown':
+      direction = 'down';
+      // Play snake turn sound
+      snakeTurnSound.play();
+      break;
+    case 'ArrowLeft':
+      direction = 'left';
+      // Play snake turn sound
+      snakeTurnSound.play();
+      break;
+    case 'ArrowRight':
+      direction = 'right';
+      // Play snake turn sound
+      snakeTurnSound.play();
+      break;
+  }
 });
 
-function updateHighScore(){
-    document.getElementById('highScore').textContent = `High Score  ${highScore}`;
-}
-
-function updateScore(){
-    document.getElementById('currentScore').textContent = `Score: ${currentScore}`;
-}
-/* TEST METHODS/FUNCTIONS */
-// Add a click event listener to the canvas
-//canvas.addEventListener("click", function (e) {
-    // Get the coordinates of the click relative to the canvas
-    //var x = e.clientX - canvas.getBoundingClientRect().left;
-    //var y = e.clientY - canvas.getBoundingClientRect().top;
-    // Log the coordinates to the console
-    //cl(`Clicked at coordinates: X=${x}, Y=${y}`);
-//});
+/* ================> INIT ================> */
+// Start and Stop button event listener
+document.getElementById('start').addEventListener('click', startGame);
+document.getElementById('reset').addEventListener('click', stopGame);
+// Init game
+updateHighScore();
+generateFood();
