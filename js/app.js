@@ -2,10 +2,10 @@
 /* ================> GLOBAL VARS ================> */
 // const cl = (input) => {console.log(input);};
 // Sound files and Variables
-const gameOverSound = new Audio('game-over.mp3');
-const gameStartSound = new Audio('game-start.mp3');
-const snakeTurnSound = new Audio('snake-turn.mp3');
-const snakeEatAppleSound = new Audio('snake-eat-apple.mp3');
+const gameOverSound = new Audio('audio/game-over.mp3');
+const gameStartSound = new Audio('audio/game-start.mp3');
+const snakeTurnSound = new Audio('audio/snake-turn.mp3');
+const snakeEatAppleSound = new Audio('audio/snake-eat-apple.mp3');
 gameStartSound.volume = 0.35;
 
 // Canvas
