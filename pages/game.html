@@ -14,58 +14,61 @@
 
 </head>
 
-<header>
-  <nav>
-    <ul class="nav-ul">
-      <li class="nav-link"><a href="index.html">Home</a></li>
-      <li class="nav-link"><a href="game.html">Game</a></li>
-      <li class="nav-link"><a href="scores.html">Scores</a></li>
-    </ul>
-  </nav>
-  <h1 class="main-heading"><em class="name-em">The East Code:</em> Classic Snake Game</h1>
-</header>
+<body class="game-page">
 
-<main>
-  <div class="game-card">
-    <canvas id="gameCanvas" width="600" height="600"></canvas>
-    <div class="score-container">
-      <div class="score-box" id="highScore">
-        <p>High Score</p>
-        <p>0</p>
-      </div>
-      <div class="score-box" id="currentScore">
-        <p>Current Score</p>
-        <p>0</p>
-      </div>
-      <div class="toggle-container">
-        <div class="tutorial-container" id="tutorialContainer">
-          <h2>How to Play</h2>
-          <p>Use the arrow keys to control the snake:</p>
-          <ul>
-            <li>↑ - Move Up</li>
-            <li>↓ - Move Down</li>
-            <li>← - Move Left</li>
-            <li>→ - Move Right</li>
-          </ul>
-          <p>Press the "GO!" button to start the game and "STOP" to end the game.</p>
+  <header>
+    <nav>
+      <ul class="nav-ul">
+        <li class="nav-link"><a href="index.html">Home</a></li>
+        <li class="nav-link"><a href="game.html">Game</a></li>
+        <li class="nav-link"><a href="scores.html">Scores</a></li>
+      </ul>
+    </nav>
+    <h1 class="main-heading"><em class="name-em">The East Code:</em> Classic Snake Game</h1>
+  </header>
+
+  <main>
+
+    <div class="game-card">
+      <canvas id="gameCanvas" width="600" height="600"></canvas>
+      <div class="score-container">
+        <div class="score-box" id="highScore">
+          <p>High Score</p>
+          <p>0</p>
         </div>
+        <div class="score-box" id="currentScore">
+          <p>Current Score</p>
+          <p>0</p>
+        </div>
+        <div class="toggle-container">
+          <div class="tutorial-container" id="tutorialContainer">
+            <h2>How to Play</h2>
+            <p>Use the arrow keys to control the snake:</p>
+            <ul>
+              <li>↑ - Move Up</li>
+              <li>↓ - Move Down</li>
+              <li>← - Move Left</li>
+              <li>→ - Move Right</li>
+            </ul>
+            <p>Press the "GO!" button to start the game and "STOP" to end the game.</p>
+          </div>
 
-        <button class="toggle-tutorial" onclick="toggleTutorial()">How To Play</button>
+          <button class="toggle-tutorial" onclick="toggleTutorial()">How To Play</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="controls">
-    <button class="start" id="start">GO!</button>
-    <button class="stop" id="reset">STOP</button>
-  </div>
+    <div class="controls">
+      <button class="start" id="start">GO!</button>
+      <button class="stop" id="reset">STOP</button>
+    </div>
 
-</main>
+  </main>
 
-<footer>
-  <p>&copy; 2023 The EastCode. All rights reserved.</p>
-</footer>
-<script src="../js/app.js"></script>
+  <footer>
+    <p>&copy; 2023 The EastCode. All rights reserved.</p>
+  </footer>
+  <script src="../js/app.js"></script>
 </body>
 
 </html>
