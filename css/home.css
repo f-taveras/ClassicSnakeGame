@@ -43,6 +43,7 @@ ul.nav-ul li {
   color: rgb(92, 229, 68);
 }
 
+
 em.name-em {
   color: rgb(163, 6, 32)
 }
@@ -52,6 +53,7 @@ h1.main-heading {
   text-align: center;
   font-size: 30px;
 }
+
 
 main {
   flex: 1;
@@ -171,14 +173,6 @@ main {
   }
 }
 
-.team-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.team-section li {
-  margin-bottom: 10px;
-}
 
 .play-section button {
   background-color: rgb(0, 0, 0);
@@ -192,7 +186,7 @@ main {
   margin: 5px 15px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
   cursor: pointer;
-  animation: pulse 2s infinite;
+  animation: pulse 4s infinite;
 }
 
 @keyframes pulse {
@@ -210,7 +204,8 @@ main {
 .play-section button:active {
   transform: scale(0.95);
   transition: transform 0.1s ease-in-out;
-}
+  }
+
 
 .play-section button:hover{
   background-color: rgb(3, 193, 3);
@@ -335,3 +330,124 @@ footer {
   transform: scale(0.95);
   transition: background-color 0.3s, color 0.3s; 
 }
+
+/* Animation for Team Members*/
+.rotating-text-wrapper {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rotating-text-wrapper p {
+  font-size: 16px;
+  margin: 0;
+  padding: 0.3em;
+  color: #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+
+.rotating-text-wrapper p:nth-child(1) {
+
+  animation-name: rotating-text-1;
+}
+
+@keyframes rotating-text-1 {
+  0% {
+    transform: translateY(200%);
+  }
+  20% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+  21% {
+    opacity: 0;
+  }
+}
+
+.rotating-text-wrapper p:nth-child(2) {
+
+  animation-name: rotating-text-2;
+}
+
+@keyframes rotating-text-2 {
+  20% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  40% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  41% {
+    opacity: 0;
+  }
+}
+
+.rotating-text-wrapper p:nth-child(3) {
+
+  animation-name: rotating-text-3;
+}
+
+@keyframes rotating-text-3 {
+  40% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  61% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.rotating-text-wrapper p:nth-child(4) {
+  animation-name: rotating-text-4;
+}
+
+@keyframes rotating-text-4 {
+  60% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(-150%);
+    opacity: 1;
+  }
+  81% {
+    opacity: 0;
+  }
+}
+
+.rotating-text-wrapper p:nth-child(5) {
+
+  animation-name: rotating-text-5;
+}
+
+@keyframes rotating-text-5 {
+  80% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  99% {
+    transform: translateY(-250%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-250%);
+  }
+}
+
+
+
+
