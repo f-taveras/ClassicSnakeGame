@@ -6,7 +6,7 @@ body.game-page {
   height: 100vh;
   margin: 0;
   font-family: monospace;
-  background-image: url('img/cobra.png'), linear-gradient(#0f0f0f 60%, #595b5e 100%);
+  background-image: url('../img/cobra.png'), linear-gradient(#0f0f0f 60%, #595b5e 100%);
   background-size: 300px, cover;
   background-position: 102% 140%;
   background-repeat: no-repeat;
