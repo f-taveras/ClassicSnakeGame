@@ -39,8 +39,8 @@ class Game {
 
 // Local storage
 const storedScores = localStorage.getItem('snakeScores');
-if(!storedScores){
-  scores = [ new Game(0, playerName, 0, 0) ];
+if (!storedScores) {
+  scores = [new Game(0, playerName, 0, 0)];
 } else {
   const parsedScores = JSON.parse(storedScores);
   let newPlayer = {};
@@ -52,7 +52,7 @@ if(!storedScores){
     score.gamesPlayed
   ));
 
-  if(!scores.find(isPlayer)) {
+  if (!scores.find(isPlayer)) {
     newPlayer = new Game(0, playerName, 0, 0);
     scores.push(newPlayer);
   }
@@ -215,7 +215,7 @@ function stopGame() {
   }
 
   const gameNumber = scores.reduce(
-    (accumulator,currentValue) => accumulator+currentValue.gamesPlayed,0
+    (accumulator, currentValue) => accumulator + currentValue.gamesPlayed, 0
   );
 
   playerObj.id = gameNumber + 1;
@@ -291,17 +291,16 @@ generateFood();
 
 //Toggle Tutorial Function for Game HTML
 function toggleTutorial() {
-    let tutorialContainer = document.getElementById("tutorialContainer");
-    let button = document.querySelector(".toggle-tutorial");
-  
-    if (tutorialContainer.style.display === "none") {
-      tutorialContainer.style.display = "block";
-      button.innerText = "Hide Tutorial";
-    } else {
-      tutorialContainer.style.display = "none";
-      button.innerText = "How To Play";
-    }
-  }
+  let tutorialContainer = document.getElementById("tutorialContainer");
+  let button = document.querySelector(".toggle-tutorial");
 
-//});
+  if (tutorialContainer.style.display === "none") {
+    tutorialContainer.style.display = "block";
+    button.innerText = "Hide Tutorial";
+  } else {
+    tutorialContainer.style.display = "none";
+    button.innerText = "How To Play";
+  }
+}
+
 
