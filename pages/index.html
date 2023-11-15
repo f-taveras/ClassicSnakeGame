@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The EastCode - Home</title>
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../css/home.css"> 
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
 </head>
-<body>
+
+<body class="home-page">
+    <video autoplay muted loop>
+        <source src="../fire.mp4" type="video/mp4">
+    </video>
+
     <header>
         <nav>
             <ul class="nav-ul">
@@ -16,35 +26,45 @@
                 <li class="nav-link"><a href="scores.html">Scores</a></li>
             </ul>
         </nav>
-        <h1 class="main-heading"><em class="name-em">The EastCode:</em> Classic Snake Game</h1>
+        <h1 class="main-heading"><em class="name-em">The East Code:</em> Classic Snake Game</h1>
     </header>
+
 
     <main>
         <section class="about-section">
             <h2>About Our Project</h2>
-            <p>We've created a Classic Snake game using JavaScript. This nostalgic game features a snake that grows in length as it consumes food and a simple grid-based playing area. Players will control the snake's direction. The game's objective is to eat as much food as possible without colliding with the walls or the snake's own tail. Play smart, because the game keeps score of player losses and wins.</p>
+            <p>We've created a rendition of the Classic Snake Game using JavaScript. This nostalgic, arcade game
+                features a snake that grows in
+                length as it consumes food and a simple grid-based playing area. Players will control the snake's
+                direction. The game's objective is to eat as much food as possible without colliding with the walls or
+                the snake's own tail. Play smart, because the game keeps score of player losses and wins.</p>
         </section>
 
         <section class="team-section">
-            <h2>Team EastCode Members</h2>
-            <ul>
-              <li>Felix Taveras </li>
-              <li>Ekow Yawson</li>
-              <li>Stephanie G. Johnson</li>
-              <li>Latherio Kidd</li>
-              <li>David Grier</li>
-            </ul>
+            <h2>The East Code</h2>
+            <div class="rotating-text-wrapper">
+                <p>Felix Taveras</p>
+                <p>Ekow Yawson</p>
+                <p>Stephanie G. Johnson</p>
+                <p>Latherio Kidd</p>
+                <p>David Grier</p>
+            </div>
         </section>
 
+
+
         <section class="play-section">
-          <a href="game.html">
-            <button>Play Game</button>
-          </a>
+            <a href="game.html">
+                <button>Play Game</button>
+            </a>
         </section>
     </main>
+
 
     <footer>
         <p>&copy; 2023 The EastCode. All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

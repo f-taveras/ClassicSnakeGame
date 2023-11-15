@@ -254,6 +254,7 @@ function updateScore() {
   document.getElementById('currentScore').textContent = `Score: ${currentScore}`;
 }
 
+
 /* HANDLE ARROW KEY CONTROLS */
 document.addEventListener('keydown', (e) => {
   switch (e.key) {
@@ -287,3 +288,20 @@ document.getElementById('reset').addEventListener('click', stopGame);
 // Init game
 updateHighScore();
 generateFood();
+
+//Toggle Tutorial Function for Game HTML
+function toggleTutorial() {
+    let tutorialContainer = document.getElementById("tutorialContainer");
+    let button = document.querySelector(".toggle-tutorial");
+  
+    if (tutorialContainer.style.display === "none") {
+      tutorialContainer.style.display = "block";
+      button.innerText = "Hide Tutorial";
+    } else {
+      tutorialContainer.style.display = "none";
+      button.innerText = "How To Play";
+    }
+  }
+
+//});
+
