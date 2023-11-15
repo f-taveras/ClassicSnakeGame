@@ -1,5 +1,6 @@
 body.home-page,
-body.scores-page {
+body.scores-page,
+body.game-page {
   display: flex;
   flex-direction: column;
   height: 100vh;
