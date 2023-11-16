@@ -239,6 +239,7 @@ function gameOver() {
 
   alert(`Game Over! Your score ${currentScore}`);
   stopGame();
+  window.location.href = '../scores.html';
 }
 
 /* ================> UPDATE SCORES */
