@@ -31,7 +31,7 @@ Our project aims to create a Classic Snake game using JavaScript. The game will 
 
 ### Lighthouse Accessibility Report Score
 
-* Provide a screenshot of your score after running a Lighthouse Accessibility report.
+![Lighthouse Report](lighthouse11-15-23.png)
 
 ### Snake: How to Play
 
