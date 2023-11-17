@@ -292,16 +292,21 @@ generateFood();
 
 //Toggle Tutorial Function for Game HTML
 function toggleTutorial() {
-  let tutorialContainer = document.getElementById("tutorialContainer");
-  let button = document.querySelector(".toggle-tutorial");
+  let tutorialContainer = document.getElementById('tutorialContainer');
+  let button = document.querySelector('.toggle-tutorial');
 
-  if (tutorialContainer.style.display === "none") {
-    tutorialContainer.style.display = "block";
-    button.innerText = "Hide Tutorial";
+  if (tutorialContainer.style.display === 'none') {
+    tutorialContainer.style.display = 'block';
+    button.innerText = 'Hide Tutorial';
   } else {
-    tutorialContainer.style.display = "none";
-    button.innerText = "How To Play";
+    tutorialContainer.style.display = 'none';
+    button.innerText = 'How To Play';
   }
 }
 
-
+// Add player name to top
+const getPlayerH2 = document.getElementById('player-name');
+const strongEl = document.createElement('strong');
+getPlayerH2.textContent = 'Let\'s Go ';
+strongEl.textContent = `${playerName}`;
+getPlayerH2.appendChild(strongEl);
