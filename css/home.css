@@ -8,7 +8,7 @@ body.game-page {
   font-family: monospace;
   background-image: url('../img/cobra.png'), linear-gradient(#0f0f0f 60%, #595b5e 100%);
   background-size: 300px, cover;
-  background-position: 102% 140%;
+  background-position: 102% 120%;
   background-repeat: no-repeat;
 }
 
@@ -126,6 +126,7 @@ main {
 .play-section {
   margin: 20px 80px 30px 80px;
   text-align: center;
+  max-width: 1000px;
 }
 
 .high-score {
